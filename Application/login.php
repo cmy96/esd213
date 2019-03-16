@@ -1,6 +1,7 @@
 <?php
 
 require_once 'include/common.php';
-header("Location: list-view.php");
+$_SESSION['username'] = $_POST['username'];
+header("Location: userUI.php");
 
 ?>

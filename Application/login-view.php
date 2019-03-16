@@ -8,6 +8,7 @@ if (isset($_POST['username'])) {
     $username = $_POST['username'];
 }
 
+//assume that user is always able to log in
 
 ?>
 
