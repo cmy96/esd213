@@ -4,39 +4,7 @@ require_once "include/common.php";
 
 
 include 'header.php';
-// input
-// {
-//   dateTime: “datetime”,
-//   minPrice: “Float”,
-//   maxPrice: “Float”,
-//   Location: “varchar”
-// }
 
-// output
-// {  
-//   SID: “Int”,
-//   Name: “string”,
-//   Location: “varchar”,
-//   Availability: “int”,
-//   Timeslot: “Datetime”
-// }
-$dummy_output = '[
-{  
-    "SID": "1",
-    "Name": "ABC",
-    "Location": "Jurong",
-    "Availability": "4",
-    "Timeslot": "2019-03-21 10:0:0"
-  },
-{  
-    "SID": "2",
-    "Name": "DEF",
-    "Location": "Pasir Ris",
-    "Availability": "2",
-    "Timeslot": "2019-03-21 10:0:0"
-  }]
-';
-$results = json_decode($dummy_output,True);
 
 ?>
 
@@ -46,7 +14,7 @@ $results = json_decode($dummy_output,True);
 
       <div class="col-lg-3">
 
-        <h1 class="my-4">Salons</h1>
+        <h1 class="my-4"><?=$_GET['sid']?></h1>
 
       </div>
       <!-- /.col-lg-3 -->
@@ -81,30 +49,7 @@ $results = json_decode($dummy_output,True);
         </div>
 
         <div class="row">
-          <?php
-          foreach($results as $result){
-            echo "
-            <div class='col-lg-4 col-md-6 mb-4'>
-            <div class='card h-100'>
-              <a href='#'><img class='card-img-top' src='http://placehold.it/700x400' alt=''></a>
-              <div class='card-body'>
-                <h4 class='card-title'>
-                  <a href='salon-details.php?sid={$result['SID']}'>{$result['Name']}</a>
-                </h4>
-                <h5>{$result['Location']}</h5>
-                <p class='card-text'>{$result['Timeslot']} : {$result['Availability']} slots</p>
-              </div>
-              <div class='card-footer'>
-                <a class='btn btn-outline-secondary' href ='make_bookings.php'>Make Booking</a>
-              </div>
-            </div>
-          </div>
-            ";
-
-
-          }
-
-          ?>
+          salon is good
           
 
         </div>
