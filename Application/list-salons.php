@@ -95,7 +95,9 @@ $results = json_decode($dummy_output,True);
                 <p class='card-text'>{$result['Timeslot']} : {$result['Availability']} slots</p>
               </div>
               <div class='card-footer'>
-                <a class='btn btn-outline-secondary' href ='make_bookings.php'>Make Booking</a>
+                <a class='btn btn-outline-secondary' href ='make_booking.php?sid={$result['SID']}&name={$result['Name']}&timeslot={$result['Timeslot']}&location={$result['Location']}'>
+                Make Booking
+                </a>
               </div>
             </div>
           </div>
