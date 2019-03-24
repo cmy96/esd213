@@ -14,4 +14,5 @@ echo "<table><tr><th>Hairstyles</th><th>Select</th></tr>";
 foreach($images['items'] as $item){
     echo "<tr><td><div style='height: 200px ; width:200px'><img class = 'img-fluid' src={$item['link']}></div></td><td></td></tr>";
 }
+include 'footer.php';
 ?>
