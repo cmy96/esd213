@@ -24,14 +24,14 @@ $dummy_output = '[
 {  
     "SID": "1",
     "Name": "ABC",
-    "Location": "Jurong",
+    "Location": "65 Jurong East Street 13, Singapore 609647",
     "Availability": "4",
     "Timeslot": "2019-03-21 10:0:0"
   },
 {  
     "SID": "2",
     "Name": "DEF",
-    "Location": "Pasir Ris",
+    "Location": "1 Pasir Ris Cl, Singapore 519599",
     "Availability": "2",
     "Timeslot": "2019-03-21 10:0:0"
   }]
@@ -89,7 +89,7 @@ $results = json_decode($dummy_output,True);
               <a href='#'><img class='card-img-top' src='http://placehold.it/700x400' alt=''></a>
               <div class='card-body'>
                 <h4 class='card-title'>
-                  <a href='salon-details.php?sid={$result['SID']}'>{$result['Name']}</a>
+                  <a href='salon-details.php?sid={$result['SID']}&name={$result['Name']}&location={$result['Location']}'>{$result['Name']}</a>
                 </h4>
                 <h5>{$result['Location']}</h5>
                 <p class='card-text'>{$result['Timeslot']} : {$result['Availability']} slots</p>

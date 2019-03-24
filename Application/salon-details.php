@@ -5,7 +5,7 @@ require_once "include/common.php";
 
 include 'header.php';
 
-
+$location = $_GET["location"];
 ?>
 
   <div class="container">
@@ -14,7 +14,7 @@ include 'header.php';
 
       <div class="col-lg-3">
 
-        <h1 class="my-4"><?=$_GET['sid']?></h1>
+        <h1 class="my-4"><?=$_GET['name']?></h1>
 
       </div>
       <!-- /.col-lg-3 -->
@@ -29,16 +29,14 @@ include 'header.php';
           </ol>
           <div class="carousel-inner" role="listbox">
             <div class="carousel-item active">
-              <img class="d-block img-fluid" src="http://placehold.it/900x350" alt="First slide">
+              <img class="d-block img-fluid" src="https://maps.googleapis.com/maps/api/staticmap?markers=<?=$location?>&zoom=13&size=900x350&maptype=roadmap
+&key=AIzaSyBwZldeN3pqjFs7YCGTamUWXIf28h-oX_Y" alt="First slide">
             </div>
             <div class="carousel-item">
-              <img class="d-block img-fluid" src="http://placehold.it/900x350" alt="Second slide">
+              <img class="d-block img-fluid" src="https://maps.googleapis.com/maps/api/staticmap?markers=<?=$location?>&zoom=13&size=900x350&maptype=hybrid
+&key=AIzaSyBwZldeN3pqjFs7YCGTamUWXIf28h-oX_Y" alt="Second slide">
             </div>
-            <div class="carousel-item">
-              <img class="d-block img-fluid" src="http://placehold.it/900x350" alt="Third slide">
-            </div>
-          </div>
-          <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
             <span class="sr-only">Previous</span>
           </a>
@@ -46,6 +44,7 @@ include 'header.php';
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="sr-only">Next</span>
           </a>
+            
         </div>
 
         <div class="row">
