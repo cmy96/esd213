@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
-
+<?php 
+require_once "include/common.php";
+?>
 <head>
 
   <meta charset="utf-8">
@@ -32,14 +34,14 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">About</a>
+            <a class="nav-link" href="hairstyles.php">Hairstyles</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="search.php">Search</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Contact</a>
-          </li>
+            <a class="nav-link" href="user.php"><?=$_SESSION['username']?></a>
+          </li> 
         </ul>
       </div>
     </div>
