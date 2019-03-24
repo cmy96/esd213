@@ -12,6 +12,6 @@ echo "<table><tr><th>Hairstyles</th><th>Select</th></tr>";
 // var_dump($images);
 // echo json_encode($images, JSON_PRETTY_PRINT);
 foreach($images['items'] as $item){
-    echo "<tr><td><img src={$item['link']}></td><td></td></tr>";
+    echo "<tr><td><div style='height: 200px ; width:200px'><img class = 'img-fluid' src={$item['link']}></div></td><td></td></tr>";
 }
 ?>
