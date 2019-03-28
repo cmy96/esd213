@@ -16,7 +16,7 @@ $dummy_output = '
             "UID": "01",
             "SessionID": "03",
             "Date": "2019-03-21 10:0:0",
-            "Status": "open"
+            "Status": "closed"
         },
         {
             "bookingID": "02",
@@ -46,7 +46,7 @@ foreach ($results['Booking'] as $booking){
 }
 
 
-echo "<tr><td><input type='submit'/></td></tr></table></form>";
+echo "<tr><td><input type='submit'/></td><td></td><td></td></tr></table></form>";
 include 'footer.php';
 ?>
 
