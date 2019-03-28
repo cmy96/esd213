@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Mar 28, 2019 at 03:34 PM
+-- Generation Time: Mar 28, 2019 at 05:18 PM
 -- Server version: 5.7.19
 -- PHP Version: 7.1.9
 
@@ -21,7 +21,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `db_salon`
 --
-DROP DATABASE IF EXISTS `db_salon`;
 CREATE DATABASE IF NOT EXISTS `db_salon` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
 USE `db_salon`;
 
@@ -42,14 +41,16 @@ CREATE TABLE IF NOT EXISTS `availability` (
   PRIMARY KEY (`SessionID`),
   KEY `LocationID` (`LocationID`),
   KEY `SessionID` (`SessionID`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `availability`
 --
 
 INSERT INTO `availability` (`SessionID`, `BID`, `LocationID`, `Availability`, `timeslot`, `price`) VALUES
-(1, 1, 2, 3, '2002-05-30 09:00:00', 12.05);
+(1, 1, 1, 5, '2002-05-30 09:00:00', 15),
+(2, 2, 2, 10, '2019-03-28 15:45:23', 5),
+(3, 1, 1, 20, '2019-03-28 16:20:04', 25);
 
 -- --------------------------------------------------------
 
@@ -66,14 +67,15 @@ CREATE TABLE IF NOT EXISTS `booking` (
   PRIMARY KEY (`bookingID`),
   KEY `SessionID` (`SessionID`),
   KEY `UID` (`UID`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `booking`
 --
 
 INSERT INTO `booking` (`bookingID`, `UID`, `SessionID`, `booking_status`) VALUES
-(1, 1, 1, '');
+(1, 1, 1, 'accepted'),
+(2, 1, 2, '');
 
 -- --------------------------------------------------------
 
