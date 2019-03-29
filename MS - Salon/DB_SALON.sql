@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Mar 29, 2019 at 05:50 AM
+-- Generation Time: Mar 29, 2019 at 06:35 AM
 -- Server version: 5.7.19
 -- PHP Version: 7.1.9
 
@@ -50,8 +50,8 @@ CREATE TABLE IF NOT EXISTS `availability` (
 INSERT INTO `availability` (`SessionID`, `BID`, `LocationID`, `Availability`, `timeslot`, `price`) VALUES
 (1, 1, 1, 4, '2002-05-30 09:00:00', 15),
 (2, 2, 2, 10, '2019-03-28 15:45:23', 5),
-(3, 1, 1, 20, '2019-03-28 16:20:04', 25),
-(4, 2, 1, 2, '2019-03-29 02:55:27', 20.55);
+(3, 3, 3, 20, '2019-03-28 16:20:04', 25),
+(4, 4, 4, 2, '2019-03-29 02:55:27', 20.55);
 
 -- --------------------------------------------------------
 
