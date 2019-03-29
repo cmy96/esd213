@@ -2,7 +2,7 @@
 
 require_once "include/common.php";
 
-
+include "include/services/docker_links.php";
 include 'header.php';
 // input
 // {
@@ -36,7 +36,9 @@ $dummy_output = '[
     "Timeslot": "2019-03-21 10:0:0"
   }]
 ';
-$results = json_decode($dummy_output,True);
+
+$salons = new SalonDAO($salon);
+$results = $salons->retrieveAll()["Search"];
 
 ?>
 
@@ -89,13 +91,13 @@ $results = json_decode($dummy_output,True);
               <a href='#'><img class='card-img-top' src='http://placehold.it/700x400' alt=''></a>
               <div class='card-body'>
                 <h4 class='card-title'>
-                  <a href='salon-details.php?sid={$result['SID']}&name={$result['Name']}&location={$result['Location']}'>{$result['Name']}</a>
+                  <a href='salon-details.php?sid={$result['bid']}&name={$result['name']}&location={$result['postal_code']}'>{$result['name']}</a>
                 </h4>
-                <h5>{$result['Location']}</h5>
+                <h5>{$result['postal_code']} {$result['Unit_number']}</h5>
                 <p class='card-text'>{$result['Timeslot']} : {$result['Availability']} slots</p>
               </div>
               <div class='card-footer'>
-                <a class='btn btn-outline-secondary' href ='make_booking.php?sid={$result['SID']}&name={$result['Name']}&timeslot={$result['Timeslot']}&location={$result['Location']}'>
+                <a class='btn btn-outline-secondary' href ='make_booking.php?sid={$result['bid']}&name={$result['name']}&timeslot={$result['Timeslot']}&location={$result['postal_code']}'>
                 Make Booking
                 </a>
               </div>
