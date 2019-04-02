@@ -42,7 +42,7 @@ require_once "include/services/docker_links.php";
             <a class="nav-link" href="search.php">Search</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="user.php"><?=$_SESSION['username']?></a>
+            <a class="nav-link" href="user.php">My Bookings</a>
           </li> 
         </ul>
       </div>

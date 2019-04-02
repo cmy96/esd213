@@ -7,7 +7,7 @@ include 'header.php';
 <div class="container p-4 m-1" >
 
 <?php
-$uid = "0";
+$uid = "1";
 $sessionid = $_GET["sessionID"];
 $date = $_GET['timeslot'];
 $status = 'open';
