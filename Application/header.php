@@ -2,6 +2,8 @@
 <html lang="en">
 <?php 
 require_once "include/common.php";
+include 'credentials.php';
+require_once "include/services/docker_links.php";
 ?>
 <head>
 

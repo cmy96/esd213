@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Mar 26, 2019 at 10:04 AM
+-- Generation Time: Mar 29, 2019 at 06:35 AM
 -- Server version: 5.7.19
 -- PHP Version: 7.1.9
 
@@ -41,14 +41,17 @@ CREATE TABLE IF NOT EXISTS `availability` (
   PRIMARY KEY (`SessionID`),
   KEY `LocationID` (`LocationID`),
   KEY `SessionID` (`SessionID`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `availability`
 --
 
 INSERT INTO `availability` (`SessionID`, `BID`, `LocationID`, `Availability`, `timeslot`, `price`) VALUES
-(1, 1, 2, 3, '2002-05-30 09:00:00', 12.05);
+(1, 1, 1, 4, '2002-05-30 09:00:00', 15),
+(2, 2, 2, 10, '2019-03-28 15:45:23', 5),
+(3, 3, 3, 20, '2019-03-28 16:20:04', 25),
+(4, 4, 4, 2, '2019-03-29 02:55:27', 20.55);
 
 -- --------------------------------------------------------
 
@@ -65,14 +68,15 @@ CREATE TABLE IF NOT EXISTS `booking` (
   PRIMARY KEY (`bookingID`),
   KEY `SessionID` (`SessionID`),
   KEY `UID` (`UID`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `booking`
 --
 
 INSERT INTO `booking` (`bookingID`, `UID`, `SessionID`, `booking_status`) VALUES
-(1, 1, 1, '');
+(1, 1, 1, ''),
+(2, 1, 2, '');
 
 -- --------------------------------------------------------
 
@@ -84,11 +88,23 @@ DROP TABLE IF EXISTS `location`;
 CREATE TABLE IF NOT EXISTS `location` (
   `LocationID` int(11) NOT NULL AUTO_INCREMENT,
   `BID` int(11) NOT NULL,
-  `Postal_Code` int(11) NOT NULL,
+  `Postal_Code` int(6) NOT NULL,
   `Unit_Number` varchar(10) NOT NULL,
   `region` varchar(20) NOT NULL,
   PRIMARY KEY (`LocationID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `location`
+--
+
+INSERT INTO `location` (`LocationID`, `BID`, `Postal_Code`, `Unit_Number`, `region`) VALUES
+(1, 1, 178906, '#01-62 ', 'Central'),
+(2, 2, 188030, '', 'Central'),
+(3, 3, 757713, '', 'North'),
+(4, 4, 520510, '', 'East'),
+(5, 5, 307632, '', 'Central'),
+(6, 5, 640494, ' #01-132', 'West');
 
 -- --------------------------------------------------------
 
@@ -102,15 +118,19 @@ CREATE TABLE IF NOT EXISTS `salon` (
   `Name` varchar(20) NOT NULL,
   `Description` varchar(400) NOT NULL,
   PRIMARY KEY (`BID`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `salon`
 --
 
 INSERT INTO `salon` (`BID`, `Name`, `Description`) VALUES
-(1, 'HappyGoLucky', 'Happy salon'),
-(2, 'HappyGoLucy', 'Lucky salon');
+(1, 'PREP Luxe', '15 Stamford Rd, #01-62 Capitol Piazza, Singapore 178906'),
+(2, 'Zeal Salon', '241A Victoria St, Bugis Village, Singapore 188030'),
+(3, 'Lili Beauty', '30 Sembawang Dr, Singapore 757713'),
+(4, 'Full House Salon', '510 Tampines Central 1, Singapore 520510'),
+(5, 'Super Cuts', '191 Thomson Rd, Singapore 307632'),
+(6, 'Xquizit Hair Design', '494 Jurong West Street 41, #01-132, Singapore 640494');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
