@@ -24,41 +24,42 @@ class BookingDAO {
     public function editBooking(
         $bookingID,
         $UID,
-        $SessionID,
-        $Date,
-        $Status,
-        $Location,
-        $BID){
+        // $SessionID,
+        // $Date,
+        // $Status,
+        // $Location,
+        $BID
+        ){
 
         //The URL that we want to send a PUT request to.
         $url = "{$this->link}"."bookings1";
-
-        //Initiate cURL
-        $ch = curl_init($url);
-
-        //Use the CURLOPT_PUT option to tell cURL that
-        //this is a PUT request.
-        curl_setopt($ch, CURLOPT_PUT, true);
-
-        //We want the result / output returned.
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-
         //Our fields.
         $fields = array(
             "bookingID" => $bookingID,
             "UID" => $UID,
-            "SessionID" => $SessionID,
-            "Date" => $Date,
-            "Status" => $Status,
-            "Location" => $Location,
+            // "SessionID" => $SessionID,
+            // "Date" => $Date,
+            // "Status" => $Status
+            // "Location" => $Location,
             "BID" => $BID 
                         );
-        curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($fields));
-
-        //Execute the request.
-        $response = curl_exec($ch);
-        $parsed = json_decode($response,True);
-        echo $parsed;
+        //Encode the array into JSON.
+        $data_json = json_encode($fields);
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json','Content-Length: ' . strlen($data_json)));
+        curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'PUT');
+        curl_setopt($ch, CURLOPT_POSTFIELDS,$data_json);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        $response  = curl_exec($ch);
+        curl_close($ch);
+        if ($response === FALSE) { /* Handle error */ 
+            return "Error";
+        }
+        else{
+            $parsed = json_decode($response,True);
+            return $parsed;
+        }
     }
 
     public function makeBooking(

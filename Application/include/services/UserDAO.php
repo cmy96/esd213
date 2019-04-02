@@ -10,7 +10,7 @@ class UserDAO {
     # Retrieve all bookings
     public function retrieveUser($UID) {
         
-        $data = file_get_contents($this->link."user/{$UID}");
+        $data = file_get_contents($this->link."user_get/{$UID}");
         $parsed = json_decode($data,True);
         return $parsed;
     }
