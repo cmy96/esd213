@@ -11,6 +11,7 @@ include 'header.php';
   <h3 >You have selected: </h3>
   <table class="table">
   <?php
+  $date = new DateTime($_GET['timeslot']);
   echo"
   <tr>
   <td>Salon Name</td>
@@ -18,15 +19,15 @@ include 'header.php';
   </tr>
   <tr>
   <td>Timeslot</td>
-  <td>{$_GET['timeslot']}</td>
+  <td>{$date->format('Y-M-d h-m-s')}</td>
   </tr>
   <tr>
   <td>Location</td>
-  <td>{$_GET['location']}</td>
+  <td>{$_GET['description']}</td>
   </tr>
   <tr>
   <td></td>
-  <td><a class='btn btn-primary' href='process_booking.php?sid={$_GET['sid']}&name={$_GET['name']}&timeslot={$_GET['timeslot']}&location={$_GET['location']}'>Confirm</a></td>
+  <td><a class='btn btn-primary' href='process_booking.php?bid={$_GET['bid']}&sessionID={$_GET['sessionID']}&timeslot={$_GET['timeslot']}&location={$_GET['location']}'>Confirm</a></td>
   </tr>";
   ?>
   </table>
