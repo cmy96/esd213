@@ -38,14 +38,14 @@ echo "<table class='table'><tr><th>Booking ID</th><th>Booking location</th><th>T
 foreach ($results['Booking'] as $booking){
     $date = new DateTime($booking['Date']);
     echo "<tr><td>{$booking['bookingID']}</td>";
-    echo "<td>{$booking['SessionID']}</td><td>{$date->format('Y-m-d h-m-s')}</td>";
+    echo "<td>{$booking['SessionID']}</td><td>{$date->format('Y-m-d h:m:s')}</td>";
     echo "<td>{$booking["Status"]}</td>";
     echo "<td><a href='accept_booking.php?bookingid={$booking['bookingID']}&uid={$booking['UID']}&sessionid={$booking['SessionID']}&date={$booking['Date']}&status={$booking["Status"]}' class='btn-sm'>Change</a></td>";
     echo "</tr>";
 }
 
-
-echo "<tr><td><input type='submit'/></td><td></td><td></td></tr></table>";
+echo "</table>";
+// echo "<tr><td><input type='submit'/></td><td></td><td></td></tr></table>";
 include 'footer.php';
 ?>
 

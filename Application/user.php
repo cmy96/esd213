@@ -8,7 +8,7 @@ include 'header.php';
 $uid = 1;
 $local_user = new UserDAO($user);
 $booking = new BookingDAO($bookings);
-
+$salons = new SalonDAO($salon);
 $user_details = $local_user->retrieveUser($uid);
 echo "<h2 class='text'>Hi {$user_details['Name']}</h2>";
 
@@ -33,14 +33,17 @@ echo "<h2 class='text'>Hi {$user_details['Name']}</h2>";
 // }
 // ';
 
-$results = $booking->retrieveById($uid);
+$results = $booking->retrieveByUserId($uid);
 
 // $results = json_decode($dummy_output,true);
 // var_dump($results);
-echo "<table class='table'><tr><th>ID</td><th>Booking location</th><th>Timing</th><th>Status</th></tr>";
-foreach ($results['Booking'] as $booking){
-    $date = new DateTime($booking['Date']);
-    echo "<tr><td>{$booking['bookingID']}</td><td>{$booking['Location']}</td><td>{$date->format('Y-M-d h-m-s')}</td><td>{$booking['Status']}</td></tr>";
+// var_dump($booking->retrieveBySessionId(3));
+echo "<table class='table'><tr><th>ID</td><th>Name</td><th>Booking location</th><th>Timing</th><th>Status</th></tr>";
+foreach ($results['Booking'] as $result){
+    $session = $salons->retrieveBySessionId($result['SessionID']);
+    // var_dump($session);
+    $date = new DateTime($result['Date']);
+    echo "<tr><td>{$result['bookingID']}</td><td>{$session['name']}</td><td>{$session['Description']}</td><td>{$date->format('Y-M-d h-m-s')}</td><td>{$result['Status']}</td></tr>";
 }
 echo "</table>";
 ?>

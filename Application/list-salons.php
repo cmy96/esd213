@@ -95,7 +95,7 @@ $results = $salons->retrieveAll()["Search"];
                   <a href='salon-details.php?sid={$result['bid']}&name={$result['name']}&location={$result['Description']}'>{$result['name']}</a>
                 </h4>
                 <h5>{$result['Description']}</h5>
-                <p class='card-text'>{$date->format('Y-M-d h-m-s')} : <br/>{$result['Availability']} slots</p>
+                <p class='card-text'>{$date->format('Y-m-d h:m:s')} : <br/>{$result['Availability']} slots</p>
               </div>
               <div class='card-footer'>
                 <a class='btn btn-outline-secondary' href ='make_booking.php?bid={$result['bid']}&name={$result['name']}&timeslot={$result['Timeslot']}&location={$result['locationID']}&sessionID={$result['sessionID']}&description={$result['Description']}'>

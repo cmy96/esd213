@@ -14,13 +14,20 @@ class BookingDAO {
         return $parsed;
     }
 
-    public function retrieveById($id) {
+    public function retrieveByUserId($id) {
         
         $data = file_get_contents($this->link."bookings3/{$id}");
         $parsed = json_decode($data,True);
         return $parsed;
     }
 
+    public function retrieveBySessionId($id) {
+        
+        $data = file_get_contents($this->link."SearchDetilsBySessionID/{$id}");
+        $parsed = json_decode($data,True);
+        return $parsed;
+    }
+    
     public function editBooking(
         $bookingID,
         $UID,
