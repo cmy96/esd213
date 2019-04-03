@@ -39,7 +39,7 @@ require_once "include/services/docker_links.php";
             <a class="nav-link" href="hairstyles.php">Hairstyles</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="search.php">Search</a>
+            <a class="nav-link" href="details.php">My Details</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="user.php">My Bookings</a>
