@@ -21,34 +21,28 @@ class BookingDAO {
         return $parsed;
     }
 
-    public function retrieveBySessionId($id) {
-        
-        $data = file_get_contents($this->link."SearchDetilsBySessionID/{$id}");
-        $parsed = json_decode($data,True);
-        return $parsed;
-    }
     
     public function editBooking(
-        $bookingID,
-        $UID,
+        $bookingID
+        // $UID,
         // $SessionID,
         // $Date,
         // $Status,
         // $Location,
-        $BID
+        // $BID
         ){
 
         //The URL that we want to send a PUT request to.
         $url = "{$this->link}"."bookings1";
         //Our fields.
         $fields = array(
-            "bookingID" => $bookingID,
-            "UID" => $UID,
+            "BookingID" => $bookingID,
+            // "UID" => $UID,
             // "SessionID" => $SessionID,
             // "Date" => $Date,
             // "Status" => $Status
             // "Location" => $Location,
-            "BID" => $BID 
+            // "BID" => $BID 
                         );
         //Encode the array into JSON.
         $data_json = json_encode($fields);
@@ -59,6 +53,7 @@ class BookingDAO {
         curl_setopt($ch, CURLOPT_POSTFIELDS,$data_json);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         $response  = curl_exec($ch);
+        var_dump($response);
         curl_close($ch);
         if ($response === FALSE) { /* Handle error */ 
             return "Error";

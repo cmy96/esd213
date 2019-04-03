@@ -6,10 +6,11 @@ include 'header.php';
 
 $booking = new BookingDAO($bookings);
 // var_dump($booking->retrieveAll());
-$result = $booking->editBooking($_GET['bookingid'],$_GET['uid'],1);
+// var_dump($_GET['bookingid']);
+$result = $booking->editBooking($_GET['bookingid']);
 // echo "<td><a href='accept_booking2.php?bookingid={$_GET['bookingid']}&uid={$_GET['uid']}&sessionid={$_GET['sessionid']}&date={$_GET['date']}&status={$_GET["status"]}' class='btn-sm'>Accept</a></td>";
-
-if ($result != "Error"){
+// var_dump($result);
+if ($result != "Error" & isset($result)){
     echo "<h3>Booking has been accepted</h3>";
 }
 else{

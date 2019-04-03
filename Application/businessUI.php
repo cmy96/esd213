@@ -40,7 +40,12 @@ foreach ($results['Booking'] as $booking){
     echo "<tr><td>{$booking['bookingID']}</td>";
     echo "<td>{$booking['SessionID']}</td><td>{$date->format('Y-m-d h:m:s')}</td>";
     echo "<td>{$booking["Status"]}</td>";
-    echo "<td><a href='accept_booking.php?bookingid={$booking['bookingID']}&uid={$booking['UID']}&sessionid={$booking['SessionID']}&date={$booking['Date']}&status={$booking["Status"]}' class='btn-sm'>Change</a></td>";
+    if ($booking['Status'] == "Open"){
+      echo "<td><a href='accept_booking.php?bookingid={$booking['bookingID']}&uid={$booking['UID']}&sessionid={$booking['SessionID']}&date={$booking['Date']}&status={$booking["Status"]}' class='btn-sm'>Change</a></td>";
+    }
+    else{
+      echo "<td></td>";
+    }
     echo "</tr>";
 }
 
