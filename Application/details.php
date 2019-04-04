@@ -4,7 +4,6 @@
 require_once "include/common.php";
 include 'header.php';
 
-$uid = 1;
 
 $current_user = new UserDAO($user);
 
