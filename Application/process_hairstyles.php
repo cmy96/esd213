@@ -4,7 +4,6 @@ require_once "include/common.php";
 include 'credentials.php';
 
 include 'header.php';
-$uid = 1;
 $local_user = new UserDAO($user);
 if (isset($_GET['hairstyle'])){
     $data = $local_user->updateHairstyle($uid,$_GET['hairstyle']);

@@ -55,13 +55,19 @@ $results = $salons->retrieveAll()["Search"];
           foreach($results as $result){
             $date = new DateTime($result['Timeslot']);
             if ($result['Availability']>0){
+              // $google_maps = "https://maps.googleapis.com/maps/api/staticmap?zoom=13&size=900x350&maptype=roadmap
+              // &key={$api_key}&markers={$result['Description']}";
               echo "
               <div class='col-lg-4 col-md-6 mb-4'>
               <div class='card h-100'>
-                <a href='#'><img class='card-img-top' src='http://placehold.it/700x400' alt=''></a>
-                <div class='card-body'>
+              ";
+              // echo "
+              //   <a href='#'><img class='card-img-top' src='{$google_maps}' alt=''></a>
+              // ";
+              echo "
+               <div class='card-body'>
                   <h4 class='card-title'>
-                    <a href='salon-details.php?sid={$result['bid']}&name={$result['name']}&location={$result['Description']}'>{$result['name']}</a>
+                    {$result['name']}
                   </h4>
                   <h5>{$result['Description']}</h5>
                   <p class='card-text'>{$date->format('Y-m-d h:m:s')} : <br/>{$result['Availability']} slots</p>

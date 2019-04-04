@@ -4,8 +4,6 @@
 require_once "include/common.php";
 include 'header.php';
 
-// hardcoded uid
-$uid = 1;
 $local_user = new UserDAO($user);
 $booking = new BookingDAO($bookings);
 $salons = new SalonDAO($salon);
