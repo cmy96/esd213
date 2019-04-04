@@ -18,15 +18,6 @@ $booking = new BookingDAO($bookings);
 
 $output = $booking->makeBooking(0,$uid,$sessionid,$date,$status,$location,$bid);
 echo "<br/>";
-// var_dump($output);
-// var_dump($booking->retrieveAll());
-
-// $dummy_output = '
-// {       	
-//     "response":"201",
-//     "bookingID": "1",
-//     "Status":"Open"
-// }';
 
 if ($output !== "Error"){
     echo"<h3>Sucessfully created booking</h3>

@@ -4,38 +4,6 @@ require_once "include/common.php";
 
 include "include/services/docker_links.php";
 include 'header.php';
-// input
-// {
-//   dateTime: “datetime”,
-//   minPrice: “Float”,
-//   maxPrice: “Float”,
-//   Location: “varchar”
-// }
-
-// output
-// {  
-//   SID: “Int”,
-//   Name: “string”,
-//   Location: “varchar”,
-//   Availability: “int”,
-//   Timeslot: “Datetime”
-// }
-$dummy_output = '[
-{  
-    "SID": "1",
-    "Name": "ABC",
-    "Location": "65 Jurong East Street 13, Singapore 609647",
-    "Availability": "4",
-    "Timeslot": "2019-03-21 10:0:0"
-  },
-{  
-    "SID": "2",
-    "Name": "DEF",
-    "Location": "1 Pasir Ris Cl, Singapore 519599",
-    "Availability": "2",
-    "Timeslot": "2019-03-21 10:0:0"
-  }]
-';
 
 $salons = new SalonDAO($salon);
 $results = $salons->retrieveAll()["Search"];
@@ -86,25 +54,27 @@ $results = $salons->retrieveAll()["Search"];
           <?php
           foreach($results as $result){
             $date = new DateTime($result['Timeslot']);
-            echo "
-            <div class='col-lg-4 col-md-6 mb-4'>
-            <div class='card h-100'>
-              <a href='#'><img class='card-img-top' src='http://placehold.it/700x400' alt=''></a>
-              <div class='card-body'>
-                <h4 class='card-title'>
-                  <a href='salon-details.php?sid={$result['bid']}&name={$result['name']}&location={$result['Description']}'>{$result['name']}</a>
-                </h4>
-                <h5>{$result['Description']}</h5>
-                <p class='card-text'>{$date->format('Y-m-d h:m:s')} : <br/>{$result['Availability']} slots</p>
-              </div>
-              <div class='card-footer'>
-                <a class='btn btn-outline-secondary' href ='make_booking.php?bid={$result['bid']}&name={$result['name']}&timeslot={$result['Timeslot']}&location={$result['locationID']}&sessionID={$result['sessionID']}&description={$result['Description']}'>
-                Make Booking
-                </a>
+            if ($result['Availability']>0){
+              echo "
+              <div class='col-lg-4 col-md-6 mb-4'>
+              <div class='card h-100'>
+                <a href='#'><img class='card-img-top' src='http://placehold.it/700x400' alt=''></a>
+                <div class='card-body'>
+                  <h4 class='card-title'>
+                    <a href='salon-details.php?sid={$result['bid']}&name={$result['name']}&location={$result['Description']}'>{$result['name']}</a>
+                  </h4>
+                  <h5>{$result['Description']}</h5>
+                  <p class='card-text'>{$date->format('Y-m-d h:m:s')} : <br/>{$result['Availability']} slots</p>
+                </div>
+                <div class='card-footer'>
+                  <a class='btn btn-outline-secondary' href ='make_booking.php?bid={$result['bid']}&name={$result['name']}&timeslot={$result['Timeslot']}&location={$result['locationID']}&sessionID={$result['sessionID']}&description={$result['Description']}'>
+                  Make Booking
+                  </a>
+                </div>
               </div>
             </div>
-          </div>
-            ";
+              ";
+            }
 
 
           }

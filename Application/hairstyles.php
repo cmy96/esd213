@@ -17,8 +17,6 @@ echo "<br/>";
 echo "<div class ='m-4'>";
 echo "<table><tr><th>Hairstyles</th><th>Select your favourite hairstyle</th></tr>";
 echo "<form action = process_hairstyles.php method='GET'>";
-// var_dump($images);
-// echo json_encode($images, JSON_PRETTY_PRINT);
 foreach($images['items'] as $item){
     echo "<tr><td><div style='height: 200px ; width:200px'><img class = 'img-fluid' src={$item['link']}></div></td><td>
     <input type ='radio' class='radio' name='hairstyle' value='{$item['link']}'/>

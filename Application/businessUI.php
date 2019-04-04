@@ -11,29 +11,6 @@ echo "<h2>Hi Business User</h2>";
 $booking = new BookingDAO($bookings);
 $results = $booking->retrieveAll();
 $businessID = 1;
-// $dummy_output = '
-// {       	
-//     "Booking": [
-//         {
-//             "bookingID": "01",
-//             "UID": "01",
-//             "SessionID": "03",
-//             "Date": "2019-03-21 10:0:0",
-//             "Status": "closed"
-//         },
-//         {
-//             "bookingID": "02",
-//             "UID": "01",
-//             "SessionID": "05",
-//             "Date": "2019-03-21 10:0:0",
-//             "Status": "open"
-//         }
-//     ]
-// }
-// ';
-
-// $results = json_decode($dummy_output,true);
-// $selection = ["open","accepted","closed"];
 echo "<table class='table'><tr><th>Booking ID</th><th>Booking location</th><th>Timing</th><th>Status</th><th>Edit</th></tr>";
 foreach ($results['Booking'] as $booking){
     $date = new DateTime($booking['Date']);
@@ -50,7 +27,6 @@ foreach ($results['Booking'] as $booking){
 }
 
 echo "</table>";
-// echo "<tr><td><input type='submit'/></td><td></td><td></td></tr></table>";
 include 'footer.php';
 ?>
 
