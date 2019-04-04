@@ -43,7 +43,14 @@ foreach ($results['Booking'] as $result){
     $session = $salons->retrieveBySessionId($result['SessionID']);
     // var_dump($session);
     $date = new DateTime($result['Date']);
-    echo "<tr><td>{$result['bookingID']}</td><td>{$session['name']}</td><td>{$session['Description']}</td><td>{$date->format('Y-M-d h-m-s')}</td><td>{$result['Status']}</td></tr>";
+    echo "<tr><td>{$result['bookingID']}</td><td>{$session['name']}</td><td>{$session['Description']}</td><td>{$date->format('Y-M-d h-m-s')}</td>";
+    $status = $result['Status'];
+    if ($status != "Accepted"){
+        echo "<td>{$status}</td></tr>";
+    }
+    else{
+        echo "<td>{$status}<br/><a href='./payment.php?amount=20&bookingid={$result['bookingID']}&name={$session['name']}' class='btn btn-primary'>Make payment</a></td></tr>";
+    }
 }
 echo "</table>";
 ?>
