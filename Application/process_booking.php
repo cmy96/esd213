@@ -7,32 +7,31 @@ include 'header.php';
 <div class="container p-4 m-1" >
 
 <?php
-// $url = 'http://server.com/path';
-// $data = array('key1' => 'value1', 'key2' => 'value2');
+$uid = "1";
+$sessionid = $_GET["sessionID"];
+$date = $_GET['timeslot'];
+$status = 'open';
+$location = $_GET['location'];
+$bid = $_GET['bid'];
 
-// // use key 'http' even if you send the request to https://...
-// $options = array(
-//     'http' => array(
-//         'header'  => "Content-type: application/x-www-form-urlencoded\r\n",
-//         'method'  => 'POST',
-//         'content' => http_build_query($data)
-//     )
-// );
-// $context  = stream_context_create($options);
-// $result = file_get_contents($url, false, $context);
-// if ($result === FALSE) { /* Handle error */ }
+$booking = new BookingDAO($bookings);
 
-// var_dump($result);
-$dummy_output = '
-{       	
-    "response":"201",
-    "bookingID": "1",
-    "Status":"Open"
-}';
+$output = $booking->makeBooking(0,$uid,$sessionid,$date,$status,$location,$bid);
+echo "<br/>";
+// var_dump($output);
+// var_dump($booking->retrieveAll());
 
-$results = json_decode($dummy_output,True);
-if ($results["response"] == "201"){
-    echo"<h3>Sucessfully created booking</h3>";
+// $dummy_output = '
+// {       	
+//     "response":"201",
+//     "bookingID": "1",
+//     "Status":"Open"
+// }';
+
+if ($output !== "Error"){
+    echo"<h3>Sucessfully created booking</h3>
+    <br/>
+    <h4>ID {$output['bookingID']}</h4>";
 }
 else{
     echo "Oops something went wrong";

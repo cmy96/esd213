@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Mar 29, 2019 at 06:35 AM
+-- Generation Time: Apr 02, 2019 at 02:44 PM
 -- Server version: 5.7.19
 -- PHP Version: 7.1.9
 
@@ -56,31 +56,6 @@ INSERT INTO `availability` (`SessionID`, `BID`, `LocationID`, `Availability`, `t
 -- --------------------------------------------------------
 
 --
--- Table structure for table `booking`
---
-
-DROP TABLE IF EXISTS `booking`;
-CREATE TABLE IF NOT EXISTS `booking` (
-  `bookingID` int(11) NOT NULL AUTO_INCREMENT,
-  `UID` int(11) NOT NULL,
-  `SessionID` int(11) NOT NULL,
-  `booking_status` varchar(10) NOT NULL,
-  PRIMARY KEY (`bookingID`),
-  KEY `SessionID` (`SessionID`),
-  KEY `UID` (`UID`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `booking`
---
-
-INSERT INTO `booking` (`bookingID`, `UID`, `SessionID`, `booking_status`) VALUES
-(1, 1, 1, ''),
-(2, 1, 2, '');
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `location`
 --
 
@@ -91,6 +66,7 @@ CREATE TABLE IF NOT EXISTS `location` (
   `Postal_Code` int(6) NOT NULL,
   `Unit_Number` varchar(10) NOT NULL,
   `region` varchar(20) NOT NULL,
+  `Description` varchar(400) NOT NULL,
   PRIMARY KEY (`LocationID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 
@@ -98,13 +74,13 @@ CREATE TABLE IF NOT EXISTS `location` (
 -- Dumping data for table `location`
 --
 
-INSERT INTO `location` (`LocationID`, `BID`, `Postal_Code`, `Unit_Number`, `region`) VALUES
-(1, 1, 178906, '#01-62 ', 'Central'),
-(2, 2, 188030, '', 'Central'),
-(3, 3, 757713, '', 'North'),
-(4, 4, 520510, '', 'East'),
-(5, 5, 307632, '', 'Central'),
-(6, 5, 640494, ' #01-132', 'West');
+INSERT INTO `location` (`LocationID`, `BID`, `Postal_Code`, `Unit_Number`, `region`, `Description`) VALUES
+(1, 1, 178906, '#01-62 ', 'Central', '15 Stamford Rd, #01-62 Capitol Piazza, Singapore 178906'),
+(2, 2, 188030, '', 'Central', '241A Victoria St, Bugis Village, Singapore 188030'),
+(3, 3, 757713, '', 'North', '30 Sembawang Dr, Singapore 757713'),
+(4, 4, 520510, '', 'East', '510 Tampines Central 1, Singapore 520510'),
+(5, 5, 307632, '', 'Central', '191 Thomson Rd, Singapore 307632'),
+(6, 5, 640494, ' #01-132', 'West', '494 Jurong West Street 41, #01-132, Singapore 640494');
 
 -- --------------------------------------------------------
 
@@ -116,7 +92,6 @@ DROP TABLE IF EXISTS `salon`;
 CREATE TABLE IF NOT EXISTS `salon` (
   `BID` int(11) NOT NULL AUTO_INCREMENT,
   `Name` varchar(20) NOT NULL,
-  `Description` varchar(400) NOT NULL,
   PRIMARY KEY (`BID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 
@@ -124,13 +99,13 @@ CREATE TABLE IF NOT EXISTS `salon` (
 -- Dumping data for table `salon`
 --
 
-INSERT INTO `salon` (`BID`, `Name`, `Description`) VALUES
-(1, 'PREP Luxe', '15 Stamford Rd, #01-62 Capitol Piazza, Singapore 178906'),
-(2, 'Zeal Salon', '241A Victoria St, Bugis Village, Singapore 188030'),
-(3, 'Lili Beauty', '30 Sembawang Dr, Singapore 757713'),
-(4, 'Full House Salon', '510 Tampines Central 1, Singapore 520510'),
-(5, 'Super Cuts', '191 Thomson Rd, Singapore 307632'),
-(6, 'Xquizit Hair Design', '494 Jurong West Street 41, #01-132, Singapore 640494');
+INSERT INTO `salon` (`BID`, `Name`) VALUES
+(1, 'PREP Luxe'),
+(2, 'Zeal Salon'),
+(3, 'Lili Beauty'),
+(4, 'Full House Salon'),
+(5, 'Super Cuts'),
+(6, 'Xquizit Hair Design');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

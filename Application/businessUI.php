@@ -8,45 +8,49 @@ include 'header.php';
 
 echo "<h2>Hi Business User</h2>";
 
-$dummy_output = '
-{       	
-    "Booking": [
-        {
-            "bookingID": "01",
-            "UID": "01",
-            "SessionID": "03",
-            "Date": "2019-03-21 10:0:0",
-            "Status": "closed"
-        },
-        {
-            "bookingID": "02",
-            "UID": "01",
-            "SessionID": "05",
-            "Date": "2019-03-21 10:0:0",
-            "Status": "open"
-        }
-    ]
-}
-';
+$booking = new BookingDAO($bookings);
+$results = $booking->retrieveAll();
+$businessID = 1;
+// $dummy_output = '
+// {       	
+//     "Booking": [
+//         {
+//             "bookingID": "01",
+//             "UID": "01",
+//             "SessionID": "03",
+//             "Date": "2019-03-21 10:0:0",
+//             "Status": "closed"
+//         },
+//         {
+//             "bookingID": "02",
+//             "UID": "01",
+//             "SessionID": "05",
+//             "Date": "2019-03-21 10:0:0",
+//             "Status": "open"
+//         }
+//     ]
+// }
+// ';
 
-$results = json_decode($dummy_output,true);
-$selection = ["open","accepted","closed"];
-echo "<form action = 'b_process_booking.php' method = 'GET'><table class='table'><tr><th>Booking location</th><th>Timing</th><th>Status</th></tr>";
+// $results = json_decode($dummy_output,true);
+// $selection = ["open","accepted","closed"];
+echo "<table class='table'><tr><th>Booking ID</th><th>Booking location</th><th>Timing</th><th>Status</th><th>Edit</th></tr>";
 foreach ($results['Booking'] as $booking){
-    echo "<tr><td>{$booking['bookingID']}</td><td>{$booking['Date']}</td><td><select name = '{$booking['bookingID']}'>";
-    
-    foreach ($selection as $option){
-      echo "<option value = '{$option}'";
-      if ($booking["Status"] == $option){
-        echo "selected";
-      }
-      echo ">$option</option> ";
+    $date = new DateTime($booking['Date']);
+    echo "<tr><td>{$booking['bookingID']}</td>";
+    echo "<td>{$booking['SessionID']}</td><td>{$date->format('Y-m-d h:m:s')}</td>";
+    echo "<td>{$booking["Status"]}</td>";
+    if ($booking['Status'] == "Open"){
+      echo "<td><a href='accept_booking.php?bookingid={$booking['bookingID']}&uid={$booking['UID']}&sessionid={$booking['SessionID']}&date={$booking['Date']}&status={$booking["Status"]}' class='btn-sm'>Change</a></td>";
     }
-    echo "</select></td></tr>";
+    else{
+      echo "<td></td>";
+    }
+    echo "</tr>";
 }
 
-
-echo "<tr><td><input type='submit'/></td><td></td><td></td></tr></table></form>";
+echo "</table>";
+// echo "<tr><td><input type='submit'/></td><td></td><td></td></tr></table>";
 include 'footer.php';
 ?>
 

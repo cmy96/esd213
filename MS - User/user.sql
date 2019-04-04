@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Mar 28, 2019 at 02:32 PM
+-- Generation Time: Apr 02, 2019 at 12:52 PM
 -- Server version: 5.7.19
 -- PHP Version: 7.1.9
 
@@ -36,6 +36,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   `Email` varchar(20) NOT NULL,
   `CardNo` varchar(16) NOT NULL,
   `TelegramID` varchar(50) NOT NULL,
+  `Hairstyle_link` varchar(1000) NOT NULL,
   PRIMARY KEY (`UID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
@@ -43,9 +44,9 @@ CREATE TABLE IF NOT EXISTS `user` (
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`UID`, `Name`, `Phone`, `Email`, `CardNo`, `TelegramID`) VALUES
-(1, 'Adrian', '90900000', 'qwoieu@hotmail.com', '1234567891234567', '@A_CUT_ABOVE_NOTIFICATION'),
-(2, 'User2', '90901234', '123@gmail.com', '1234567892345678', '@A_CUT_ABOVE_NOTIFICATION');
+INSERT INTO `user` (`UID`, `Name`, `Phone`, `Email`, `CardNo`, `TelegramID`, `Hairstyle_link`) VALUES
+(1, 'Adrian', '90900000', 'qwoieu@hotmail.com', '1234567891234567', '@A_CUT_ABOVE_NOTIFICATION', ''),
+(2, 'User2', '90901234', '123@gmail.com', '1234567892345678', '@A_CUT_ABOVE_NOTIFICATION', 'testing_3');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
