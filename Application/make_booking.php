@@ -4,6 +4,9 @@ require_once "include/common.php";
 
 
 include 'header.php';
+$salons = new SalonDAO($salon);
+$location = $salons->retrieveBySessionId($_GET['sessionID']);
+
 ?>
 <body>
 <div class="container" >
@@ -23,7 +26,7 @@ include 'header.php';
   </tr>
   <tr>
   <td>Location</td>
-  <td>{$_GET['description']}</td>
+  <td>{$location['Description']}</td>
   </tr>
   <tr>
   <td></td>
