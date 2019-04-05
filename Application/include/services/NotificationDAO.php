@@ -15,7 +15,7 @@ class NotificationDAO {
 
         //Initiate cURL.
         
-        $url = "{$this->link}"."TeleNoti";
+        $url = "{$this->link}"."sendTelegram";
         $ch = curl_init($url);
         
         $jsonData = array(
@@ -58,7 +58,7 @@ class NotificationDAO {
 
         //Initiate cURL.
         
-        $url = "{$this->link}"."emailNoti";
+        $url = "{$this->link}"."sendEmail";
         $ch = curl_init($url);
         
         $jsonData = array(

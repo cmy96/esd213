@@ -21,7 +21,7 @@ foreach ($results['Booking'] as $booking){
     echo "<td>{$booking["Status"]}</td>";
     echo "<td><a href='view-user.php?uid={$booking["UID"]}'>{$booking["UID"]}</a></td>";
     if ($booking['Status'] == "Open"){
-      echo "<td><a href='accept_booking.php?bookingid={$booking['bookingID']}&uid={$booking['UID']}&sessionid={$booking['SessionID']}&date={$booking['Date']}&status={$booking["Status"]}' class='btn-sm'>Change</a></td>";
+      echo "<td><a href='accept_booking.php?bookingid={$booking['bookingID']}&uid={$booking['UID']}&sessionid={$booking['SessionID']}&date={$date->format('Y-m-d h:m:s')}&status={$booking["Status"]}' class='btn-sm'>Change</a></td>";
     }
     else{
       echo "<td></td>";

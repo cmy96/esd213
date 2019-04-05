@@ -6,8 +6,8 @@ include 'header.php';
 
 $booking = new BookingDAO($bookings);
 $result = $booking->editBookingtoAccepted($_GET['bookingid']);
-$salons = new SalonDAO($salon);
-$salons->reduceAvailability($_GET['sessionid']);
+// $salons = new SalonDAO($salon);
+// $salons->reduceAvailability($_GET['sessionid']);
 $notification = new NotificationDAO($notification_link);
 $local_user = new UserDAO($user);
 $user_data = $local_user->retrieveUser($_GET['uid']);
