@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Apr 02, 2019 at 02:44 PM
+-- Generation Time: Apr 05, 2019 at 05:52 AM
 -- Server version: 5.7.19
 -- PHP Version: 7.1.9
 
@@ -21,6 +21,7 @@ SET time_zone = "+00:00";
 --
 -- Database: `db_salon`
 --
+DROP DATABASE IF EXISTS `db_salon`;
 CREATE DATABASE IF NOT EXISTS `db_salon` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
 USE `db_salon`;
 
@@ -41,17 +42,21 @@ CREATE TABLE IF NOT EXISTS `availability` (
   PRIMARY KEY (`SessionID`),
   KEY `LocationID` (`LocationID`),
   KEY `SessionID` (`SessionID`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `availability`
 --
 
 INSERT INTO `availability` (`SessionID`, `BID`, `LocationID`, `Availability`, `timeslot`, `price`) VALUES
-(1, 1, 1, 4, '2002-05-30 09:00:00', 15),
-(2, 2, 2, 10, '2019-03-28 15:45:23', 5),
-(3, 3, 3, 20, '2019-03-28 16:20:04', 25),
-(4, 4, 4, 2, '2019-03-29 02:55:27', 20.55);
+(1, 1, 1, 0, '2002-05-30 09:00:00', 15),
+(2, 2, 2, 0, '2019-03-28 15:45:23', 5),
+(3, 3, 3, 11, '2019-03-28 16:20:04', 25),
+(4, 4, 4, 2, '2019-03-29 02:55:27', 20.55),
+(5, 1, 1, 2, '2019-04-02 14:46:15', 15),
+(6, 3, 3, 30, '2019-04-02 17:45:01', 33),
+(7, 2, 1, 15, '2019-04-03 16:25:55', 55),
+(8, 2, 3, 10, '2019-04-04 01:05:57', 1000);
 
 -- --------------------------------------------------------
 
