@@ -55,15 +55,15 @@ $results = $salons->retrieveAll()["Search"];
           foreach($results as $result){
             $date = new DateTime($result['Timeslot']);
             if ($result['Availability']>0){
-              // $google_maps = "https://maps.googleapis.com/maps/api/staticmap?zoom=13&size=900x350&maptype=roadmap
-              // &key={$api_key}&markers={$result['Description']}";
+              $google_maps = "https://maps.googleapis.com/maps/api/staticmap?zoom=13&size=900x350&maptype=roadmap
+              &key={$api_key}&markers={$result['Description']}";
               echo "
               <div class='col-lg-4 col-md-6 mb-4'>
               <div class='card h-100'>
               ";
-              // echo "
-              //   <a href='#'><img class='card-img-top' src='{$google_maps}' alt=''></a>
-              // ";
+              echo "
+                <a href='#'><img class='card-img-top' src='{$google_maps}' alt=''></a>
+              ";
               echo "
                <div class='card-body'>
                   <h4 class='card-title'>

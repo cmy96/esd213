@@ -9,14 +9,14 @@ class BookingDAO {
     # Retrieve all bookings
     public function retrieveAll() {
         
-        $data = file_get_contents($this->link."bookings");
+        $data = file_get_contents($this->link."GetBkngs");
         $parsed = json_decode($data,True);
         return $parsed;
     }
 
     public function retrieveByUserId($id) {
         
-        $data = file_get_contents($this->link."bookings3/{$id}");
+        $data = file_get_contents($this->link."GetUserBooking/{$id}");
         $parsed = json_decode($data,True);
         return $parsed;
     }
@@ -28,7 +28,7 @@ class BookingDAO {
         ){
 
         //The URL that we want to send a PUT request to.
-        $url = "{$this->link}"."bookings1";
+        $url = "{$this->link}"."UpdatePayment";
         //Our fields.
         $fields = array(
             "id" => $bookingID,
@@ -57,7 +57,7 @@ class BookingDAO {
         ){
 
         //The URL that we want to send a PUT request to.
-        $url = "{$this->link}"."bookings4";
+        $url = "{$this->link}"."AcceptBookingAndUpdateAvailability";
         //Our fields.
         $fields = array(
             "id" => $bookingID,
@@ -93,7 +93,7 @@ class BookingDAO {
 
         //Initiate cURL.
         
-        $url = "{$this->link}"."bookings2";
+        $url = "{$this->link}"."AddBooking";
         $ch = curl_init($url);
         
         $jsonData = array(
