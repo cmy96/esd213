@@ -21,3 +21,5 @@ Notification - docker run -i -p 8085:8080 -e DB_USERNAME=bwce -e DB_PASSWORD= -e
 Payment - docker run -i -p 8090:8080 -e DB_USERNAME=bwce -e DB_PASSWORD= -e DB_URL=jdbc:mysql://192.168.56.1:3306/payment my/payment:1.0.0
 Bookings - docker run -i -p 8091:8080 -e DB_USERNAME=bwce -e DB_PASSWORD= -e DB_URL=jdbc:mysql://192.168.56.1:3306/bookings -e AMQP_PORT=192.168.56.1:5672 -e AMQP_USERNAME=bwce -e AMQP_PASSWORD=bwce my/bookings:1.0.0
 
+After running the dockers, expose the ports that is running the User microservice using Ngrok. Then use apigee to configure a reverse proxy to the port.
+
